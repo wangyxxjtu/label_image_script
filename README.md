@@ -19,3 +19,12 @@ python main.py
 Example
 
 ![image](example.png)
+
+Steps:
+* select or input the image Id in the top "Image ID" box.
+* input the descriptions for two image.
+* Click next to continue.
+
+The "Category" and "Attribution" shows some classification information and attributions, they are predicted by the [Place355 model](https://github.com/CSAILVision/places365) and are only for reference purpose, because they are not reliable.
+
+<font face="黑体" color=red size=12>Thank you very much!</font> 
