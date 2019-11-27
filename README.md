@@ -7,7 +7,7 @@ Requirements:
  * requests
  * json
 
-Install the python 3.6 and pip, then
+Install python 3.6 and pip, then
 ``` bash
 pip install python-qt5 requests json
 ```
