@@ -23,8 +23,8 @@ Example
 Steps:
 * select or input the image Id in the top "Image ID" box.
 * input the descriptions for two images in their corresponding caption areas.
-* Click next to continue.
+* Click 'Next Sample' to continue, and the result will be automatically saved in './caption_result/' dir.
 
-The "Category" and "Attribution" shows some classification information and attributions, they are predicted by the [Place355 model](https://github.com/CSAILVision/places365) and are only for reference purpose, because they are not reliable.
+The "Category" and "Attribution" show some classification information and attributions, they are predicted by the [Place355 model](https://github.com/CSAILVision/places365) and are only for reference purpose, because they are not reliable.
 
 # Thank you very much!
