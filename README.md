@@ -27,4 +27,4 @@ Steps:
 
 The "Category" and "Attribution" shows some classification information and attributions, they are predicted by the [Place355 model](https://github.com/CSAILVision/places365) and are only for reference purpose, because they are not reliable.
 
-<font face="黑体" color=red size=12>Thank you very much!</font> 
+# Thank you very much!
