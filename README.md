@@ -16,3 +16,5 @@ Then, run the main.py to annotate image
 ``` bash
 python main.py
 ```
+Examnple
+![An annotation example][example.png]
