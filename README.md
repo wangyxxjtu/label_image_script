@@ -11,3 +11,8 @@ Install python 3.6 and pip, then
 ``` bash
 pip install python-qt5 requests json
 ```
+
+Then, run the main.py to annotate image
+``` bash
+python main.py
+```
