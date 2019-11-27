@@ -6,3 +6,8 @@ Requirements:
  * PyQt5
  * requests
  * json
+
+Install the python 3.6 and pip, then
+``` bash
+pip install python-qt5 requests json
+```
