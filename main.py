@@ -35,7 +35,7 @@ class GridLayout(QtWidgets.QMainWindow):
         self.datalist = json.load(open('meta_data.json','r'))
         self.data_len = len(self.datalist)-1
         #pdb.set_trace()
-        self.setWindowTitle("Thanks for your effort")
+        self.setWindowTitle("Thanks for your efforts")
 
         main_ground = QtWidgets.QWidget()
         self.setCentralWidget(main_ground)
