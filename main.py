@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-"""网格布局跨行示例"""
 import sys
 import os
 #import pyautogui
@@ -36,7 +35,7 @@ class GridLayout(QtWidgets.QMainWindow):
         self.datalist = json.load(open('meta_data.json','r'))
         self.data_len = len(self.datalist)-1
         #pdb.set_trace()
-        self.setWindowTitle("You are the \'A\' behind AI")
+        self.setWindowTitle("Thanks for your effort")
 
         main_ground = QtWidgets.QWidget()
         self.setCentralWidget(main_ground)
@@ -62,8 +61,8 @@ class GridLayout(QtWidgets.QMainWindow):
 
         #layout1, self.lft_cap, self.lft_c_label, self.lft_a_label, self.lft_im_label = self.get_gridlayout(index, l_s, l_t, 'left', 'a mountain stands on the horizon, and a beautiful beach is close to it.')
         #layout2, self.rht_cap, self.rht_c_label, self.rht_a_label, self.rht_im_label = self.get_gridlayout(index, r_s, r_t, 'right', 'there are some clouds is the blue sky, and the lake under the sky is very limpid.')
-        layout1, self.lft_cap, self.lft_c_label, self.lft_a_label, self.lft_im_label = self.get_gridlayout(index, l_s, l_t, 'left', 'beach,mountain,sky,clouds')
-        layout2, self.rht_cap, self.rht_c_label, self.rht_a_label, self.rht_im_label = self.get_gridlayout(index, r_s, r_t, 'right', 'limpid lake,mountain')
+        layout1, self.lft_cap, self.lft_c_label, self.lft_a_label, self.lft_im_label = self.get_gridlayout(index, l_s, l_t, 'left', '\nbeach\nmountain\nsky\nclouds')
+        layout2, self.rht_cap, self.rht_c_label, self.rht_a_label, self.rht_im_label = self.get_gridlayout(index, r_s, r_t, 'right', '\nlimpid lake\nmountain')
 
         h_box = QtWidgets.QVBoxLayout()
 
