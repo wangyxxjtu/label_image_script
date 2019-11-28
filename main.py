@@ -32,7 +32,7 @@ class GridLayout(QtWidgets.QMainWindow):
 #class GridLayout(QtWidgets.QWidget):
     def __init__(self):
         super(GridLayout, self).__init__()
-        self.path = 'http://172.19.123.28:9000/data/'
+        self.path = 'http://holer.cc:50347/data/'
         self.datalist = json.load(open('meta_data.json','r'))
         self.data_len = len(self.datalist)-1
         #pdb.set_trace()
@@ -60,8 +60,10 @@ class GridLayout(QtWidgets.QMainWindow):
         r_s, r_t = im_data[0]
         l_s, l_t = im_data[1]
 
-        layout1, self.lft_cap, self.lft_c_label, self.lft_a_label, self.lft_im_label = self.get_gridlayout(index, l_s, l_t, 'left', 'a mountain stands on the horizon, and a beautiful beach is close to it.')
-        layout2, self.rht_cap, self.rht_c_label, self.rht_a_label, self.rht_im_label = self.get_gridlayout(index, r_s, r_t, 'right', 'there are some clouds is the blue sky, and the lake under the sky is very limpid.')
+        #layout1, self.lft_cap, self.lft_c_label, self.lft_a_label, self.lft_im_label = self.get_gridlayout(index, l_s, l_t, 'left', 'a mountain stands on the horizon, and a beautiful beach is close to it.')
+        #layout2, self.rht_cap, self.rht_c_label, self.rht_a_label, self.rht_im_label = self.get_gridlayout(index, r_s, r_t, 'right', 'there are some clouds is the blue sky, and the lake under the sky is very limpid.')
+        layout1, self.lft_cap, self.lft_c_label, self.lft_a_label, self.lft_im_label = self.get_gridlayout(index, l_s, l_t, 'left', 'beach,mountain,sky,clouds')
+        layout2, self.rht_cap, self.rht_c_label, self.rht_a_label, self.rht_im_label = self.get_gridlayout(index, r_s, r_t, 'right', 'limpid lake,mountain')
 
         h_box = QtWidgets.QVBoxLayout()
 
@@ -182,13 +184,13 @@ class GridLayout(QtWidgets.QMainWindow):
             lines = open(result_path + str(fench_index) + '_left.txt').readlines()
             lines =list(filter(lambda x:x.strip()!='', lines))
             if len(lines) > 0:
-                lft_cap = lines[-1]
+                lft_cap = ''.join(lines)#[-1]
 
         if os.path.exists(result_path + str(fench_index) +'_right.txt'):
             lines = open(result_path + str(fench_index) + '_right.txt').readlines()
             lines =list(filter(lambda x:x.strip()!='', lines))
             if len(lines) > 0:
-                rht_cap = lines[-1]
+                rht_cap = ''.join(lines)#[-1]
 
         if len(rht_cap.strip())!= '':
             self.rht_cap.setPlainText(rht_cap)
@@ -212,13 +214,13 @@ class GridLayout(QtWidgets.QMainWindow):
             lines = open(result_path + str(fench_index) + '_left.txt').readlines()
             lines =list(filter(lambda x:x.strip()!='', lines))
             if len(lines) > 0:
-                lft_cap = lines[-1]
+                lft_cap = ''.join(lines)
 
         if os.path.exists(result_path + str(fench_index) +'_right.txt'):
             lines = open(result_path + str(fench_index) + '_right.txt').readlines()
             lines =list(filter(lambda x:x.strip()!='', lines))
             if len(lines) > 0:
-                rht_cap = lines[-1]
+                rht_cap = ''.join(lines)#[-1]
 
         if len(rht_cap.strip())!= '':
             self.rht_cap.setPlainText(rht_cap)
