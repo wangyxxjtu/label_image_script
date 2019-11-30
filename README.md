@@ -5,7 +5,7 @@ Requirements:
  * PyQt5
  * requests
 
-Install python 3.6 and pip, and install the requirements (you can also directly run the main.py, the script contains the installation command.):
+Install python 3.6 and pip, and install the requirements:
 ``` bash
 pip install python-qt5 requests
 ```
