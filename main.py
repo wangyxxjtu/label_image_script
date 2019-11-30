@@ -17,12 +17,7 @@ from PyQt5.QtWidgets import QApplication, QWidget, QSpinBox, QDoubleSpinBox, QHB
 from PyQt5.QtCore import  pyqtSlot, QCoreApplication
 from PyQt5 import QtCore
 import pdb
-try:
-    import json
-except:
-    os.system('pip install json')
-    import json
-
+import json
 
 result_path = './caption_result/'
 os.makedirs(result_path, exist_ok=True)
