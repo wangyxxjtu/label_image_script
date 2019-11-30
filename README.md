@@ -4,11 +4,10 @@ Requirements:
  * python 3.6
  * PyQt5
  * requests
- * json
 
 Install python 3.6 and pip, and install the requirements (you can also directly run the main.py, the script contains the installation command.):
 ``` bash
-pip install python-qt5 requests json
+pip install python-qt5 requests
 ```
 
 Then, run the main.py to start:
