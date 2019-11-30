@@ -15,15 +15,15 @@ Then, run the main.py to start:
 ``` bash
 python main.py
 ```
-Example
-
-![image](example.png)
-
 Steps:
 * Download this project and install the requirements.
 * Select or input the beginning image Id in the top "Image ID" box.
 * Input the key words (split by newline character) for two images in their corresponding text areas.
 * Click 'Next Sample' to continue, and the result will be automatically saved in './caption_result/' dir.
+
+Example
+
+![image](example.png)
 
 The program may be stuck when you press the button, this is caused by the remote image requesting, please wait a moment ...
 
