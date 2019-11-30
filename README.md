@@ -1,5 +1,4 @@
-# label_image_script
-Annotate the images
+# Label the images
 
 Requirements:
  * python 3.6
@@ -7,7 +6,7 @@ Requirements:
  * requests
  * json
 
-Install python 3.6 and pip, and install the requirements:
+Install python 3.6 and pip, and install the requirements (you can also directly run the main.py, the script contains the installation command.):
 ``` bash
 pip install python-qt5 requests json
 ```
