@@ -1,6 +1,11 @@
 # -*- coding: utf-8 -*-
 import sys
 import os
+try:
+    from skimage import io
+except:
+    os.system('pip install scikit-image')
+    from skimage import io
 #import pyautogui
 try:
     from PyQt5 import QtWidgets
@@ -12,6 +17,8 @@ try:
 except:
     os.system('pip install requests')
     import requests
+
+import PyQt5 as Qt
 from PyQt5 import QtWidgets, QtGui
 from PyQt5.QtWidgets import QApplication, QWidget, QSpinBox, QDoubleSpinBox, QHBoxLayout
 from PyQt5.QtCore import  pyqtSlot, QCoreApplication
@@ -107,10 +114,23 @@ class GridLayout(QtWidgets.QMainWindow):
         grid.addWidget(cap, 3, 1, 5, 1)
 
         #path = 'http://172.19.123.28:9000/data/test_0.jpg'
-        path = self.path + str(index) + '_%s.jpg'%flag 
+        '''path = self.path + str(index) + '_%s.jpg'%flag 
         img_data = requests.get(path)
         Png=QtGui.QPixmap()
-        Png.loadFromData(img_data.content)
+        Png.loadFromData(img_data.content)'''
+        path = self.path + str(index) + '.jpg'
+        #if not os.path.exists('./left.jpg'):
+            #urllib.urlretrieve(img, './temp.jpg')
+        img = io.imread(path)
+        left = img[:,:128, :]
+        right = img[:,128:, :]
+        left = left[:,::-1, :]
+        io.imsave('left.jpg', left)
+        io.imsave('right.jpg', right)
+        
+        #img_data = requests.get(path)
+        Png=QtGui.QPixmap('./{}.jpg'.format(flag))
+        Png = Png.scaled(196, 196)#, Qt.KeepAspectRatio, Qt.FastTransformation)
         im_label = QtWidgets.QLabel()
         im_label.setPixmap(Png)
         
@@ -126,7 +146,7 @@ class GridLayout(QtWidgets.QMainWindow):
         im_name, im_data = self.datalist[index]#[min(index, self.data_len)]
         r_s, r_t = im_data[0]
         l_s, l_t = im_data[1]
-        path = self.path + str(index) + '_left.jpg' 
+        '''path = self.path + str(index) + '_left.jpg' 
         img_data = requests.get(path)
         Png=QtGui.QPixmap()
         Png.loadFromData(img_data.content)
@@ -136,8 +156,24 @@ class GridLayout(QtWidgets.QMainWindow):
         path = self.path + str(index) + '_right.jpg' 
         img_data = requests.get(path)
         Png=QtGui.QPixmap()
-        Png.loadFromData(img_data.content)
+        Png.loadFromData(img_data.content)'''
+        path = self.path + str(index) + '.jpg'
+        #if not os.path.exists('./left.jpg'):
+            #urllib.urlretrieve(img, './temp.jpg')
+        img = io.imread(path)
+        left = img[:,:128, :]
+        right = img[:,128:, :]
+        left = left[:,::-1, :]
+        io.imsave('left.jpg', left)
+        io.imsave('right.jpg', right)
+        
+        Png=QtGui.QPixmap('./left.jpg')
+        Png = Png.scaled(196, 196)#, Qt.KeepAspectRatio, Qt.FastTransformation)
+        #im_label = QtWidgets.QLabel()
+        self.lft_im_label.setPixmap(Png)
  
+        Png=QtGui.QPixmap('./right.jpg')
+        Png = Png.scaled(196, 196)#, Qt.KeepAspectRatio, Qt.FastTransformation)
         self.rht_im_label.setPixmap(Png)
         
         self.lft_c_label.setText(', '.join(l_s))

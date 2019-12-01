@@ -4,10 +4,11 @@ Requirements:
  * python 3.6
  * PyQt5
  * requests
+ * skimage
 
 Install python 3.6 and pip, and install the requirements:
 ``` bash
-pip install python-qt5 requests
+pip install python-qt5 requests scikit-image
 ```
 
 Then, run the main.py to start:
