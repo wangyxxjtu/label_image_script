@@ -8,8 +8,10 @@ Requirements:
 
 Install python 3.6 and pip, and install the requirements:
 ``` bash
-pip install python-qt5 requests scikit-image
+pip install python-qt5 requests scikit-image #for windows/mac 
+pip install --user pyqt5 requests scikit-image #for ubuntu 
 ```
+
 
 Then, run the main.py to start:
 ``` bash
