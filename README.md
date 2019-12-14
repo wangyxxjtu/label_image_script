@@ -21,7 +21,8 @@ Steps:
 * Select or input the beginning image ID in the top "Image ID" box.
 * Input the key words (split by newline character)for two images in their corresponding text areas or select the check boxes.
 * Click 'Next Sample' to continue, and the result will be automatically saved in './caption_result/' dir.
-
+* Each image should have 3-5 labels
+ 
 Example
 
 ![image](example.png)
