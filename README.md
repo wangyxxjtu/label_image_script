@@ -31,5 +31,5 @@ The program may be stuck when you press the button, this is caused by the remote
 
 The "Category" and "Attribution" show some classification information and attributions, they are predicted by the [Place365 model](https://github.com/CSAILVision/places365) and are only for reference purpose, because they are not reliable enough.
 
-When you finished your work, pack the './caption_result/' to file 'start-id_end-id.zip', e.g. '10_100.zip', and upload it in [this site](http://holer.cc:50347)
+When your work finished, pack the './caption_result/' to file 'start-id_end-id.zip', e.g. '10_100.zip', and upload it in [this site](http://holer.cc:50347)
 # Thank you very much!
