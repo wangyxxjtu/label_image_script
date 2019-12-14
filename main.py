@@ -45,7 +45,7 @@ class GridLayout(QtWidgets.QMainWindow):
         #the top part
         top_layout = QHBoxLayout()
 
-        top_layout.addWidget(QtWidgets.QLabel(' '*50))
+        top_layout.addWidget(QtWidgets.QLabel(' '*100))
         top_layout.addWidget(QtWidgets.QLabel('Image ID:'))
         self.spinbox = QSpinBox(self)
         self.spinbox.setRange(0, self.data_len)                                                      # 1
@@ -53,7 +53,8 @@ class GridLayout(QtWidgets.QMainWindow):
         self.spinbox.setValue(100)
         self.spinbox.valueChanged.connect(self.value_change_func)
         top_layout.addWidget(self.spinbox)
-        top_layout.addWidget(QtWidgets.QLabel(' '*50))
+        top_layout.addWidget(QtWidgets.QLabel('Total Number:{}'.format(self.data_len+1)))
+        top_layout.addWidget(QtWidgets.QLabel(' '*80))
 
         #======================================
         index = self.spinbox.value()
