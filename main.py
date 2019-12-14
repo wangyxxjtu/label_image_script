@@ -101,12 +101,24 @@ class GridLayout(QtWidgets.QMainWindow):
         grid = QtWidgets.QGridLayout()
         #grid.addWidget(label, 2, 1, 5,1)
         grid.addWidget(QtWidgets.QLabel("Category:"), 1, 0)
-        c_label = QtWidgets.QLabel(', '.join(s))
-        grid.addWidget(c_label, 1, 1)
+        #c_label = QtWidgets.QLabel(', '.join(s))
+        c_label = QtWidgets.QHBoxLayout()
+        c_items = s
+        for i in range(5):
+            temp = QtWidgets.QCheckBox(c_items[i])
+            setattr(self,flag+'_c_it' +str(i), temp)
+            c_label.addWidget(getattr(self, flag+'_c_it'+str(i)))
+
+        grid.addLayout(c_label, 1, 1)
         
         grid.addWidget(QtWidgets.QLabel("Attribution:"), 2, 0)        
-        a_label = QtWidgets.QLabel(', '.join(t))
-        grid.addWidget(a_label, 2, 1)
+        a_label = QtWidgets.QHBoxLayout()
+        for j in range(9):
+            temp = QtWidgets.QCheckBox(t[j])
+            setattr(self, flag+'_a_it'+str(j), temp)
+            a_label.addWidget(getattr(self,flag+"_a_it"+str(j)))
+ 
+        grid.addLayout(a_label, 2, 1)
 
         grid.addWidget(QtWidgets.QLabel("Your Caption:"), 3, 0)
         cap = QtWidgets.QTextEdit()
@@ -137,8 +149,65 @@ class GridLayout(QtWidgets.QMainWindow):
         H_box = QtWidgets.QHBoxLayout()
         H_box.addWidget(im_label) 
         H_box.addLayout(grid)
+        '''if flag == 'left':
+            for k in range(5):
+                attr = getattr(self, 'left_c_it'+str(k))
+                attr.stateChanged.connect(lambda: self.checkBox_change_left(attr))'''
+            #self.left_c_it0.stateChanged.connect(lambda: self.checkBox_change_left(self.left_c_it0))
+        if flag == 'left':
+            self.connect_to(self.left_c_it0)
+            self.connect_to(self.left_c_it1)
+            self.connect_to(self.left_c_it2)
+            self.connect_to(self.left_c_it3)
+            self.connect_to(self.left_c_it4)
+            self.connect_to(self.left_a_it0)
+            self.connect_to(self.left_a_it1)
+            self.connect_to(self.left_a_it2)
+            self.connect_to(self.left_a_it3)
+            self.connect_to(self.left_a_it4)
+            self.connect_to(self.left_a_it5)
+            self.connect_to(self.left_a_it6)
+            self.connect_to(self.left_a_it7)
+            self.connect_to(self.left_a_it8)
+        else:
+            self.connect_to(self.right_c_it0, False)
+            self.connect_to(self.right_c_it1, False)
+            self.connect_to(self.right_c_it2, False)
+            self.connect_to(self.right_c_it3, False)
+            self.connect_to(self.right_c_it4, False)
+            self.connect_to(self.right_a_it0, False)
+            self.connect_to(self.right_a_it1, False)
+            self.connect_to(self.right_a_it2, False)
+            self.connect_to(self.right_a_it3, False)
+            self.connect_to(self.right_a_it4, False)
+            self.connect_to(self.right_a_it5, False)
+            self.connect_to(self.right_a_it6, False)
+            self.connect_to(self.right_a_it7, False)
+            self.connect_to(self.right_a_it8, False)
 
         return H_box, cap, c_label, a_label, im_label 
+
+    def connect_to(self, box, left=True):
+        if left:
+            box.stateChanged.connect(lambda: self.checkBox_change(box))
+        else:
+            box.stateChanged.connect(lambda: self.checkBox_change(box, left))
+
+    def checkBox_change(self,ck_box, left=True):
+        if not ck_box.isChecked():
+            return
+        if left:
+            cap_text =  self.lft_cap.toPlainText()
+            box_text = ck_box.text()
+            #ck_box.setChecked(True)
+            cap_text = cap_text + box_text + '\n'
+            self.lft_cap.setPlainText(cap_text)
+        else:
+            cap_text =  self.rht_cap.toPlainText()
+            box_text = ck_box.text()
+            #ck_box.setChecked(True)
+            cap_text = cap_text + box_text + '\n'
+            self.rht_cap.setPlainText(cap_text)
 
     @pyqtSlot()
     def value_change_func(self):
@@ -146,17 +215,6 @@ class GridLayout(QtWidgets.QMainWindow):
         im_name, im_data = self.datalist[index]#[min(index, self.data_len)]
         r_s, r_t = im_data[0]
         l_s, l_t = im_data[1]
-        '''path = self.path + str(index) + '_left.jpg' 
-        img_data = requests.get(path)
-        Png=QtGui.QPixmap()
-        Png.loadFromData(img_data.content)
-        #im_label = QtWidgets.QLabel()
-        self.lft_im_label.setPixmap(Png)
-
-        path = self.path + str(index) + '_right.jpg' 
-        img_data = requests.get(path)
-        Png=QtGui.QPixmap()
-        Png.loadFromData(img_data.content)'''
         path = self.path + str(index) + '.jpg'
         #if not os.path.exists('./left.jpg'):
             #urllib.urlretrieve(img, './temp.jpg')
@@ -176,17 +234,31 @@ class GridLayout(QtWidgets.QMainWindow):
         Png = Png.scaled(196, 196)#, Qt.KeepAspectRatio, Qt.FastTransformation)
         self.rht_im_label.setPixmap(Png)
         
-        self.lft_c_label.setText(', '.join(l_s))
-        self.lft_a_label.setText(', '.join(l_t))
-        self.rht_c_label.setText(', '.join(r_s))
-        self.rht_a_label.setText(', '.join(r_t))
+        for i in range(5):
+            temp = getattr(self, 'left_c_it'+str(i))
+            temp.setText(l_s[i])
+            temp.setChecked(False)
+            temp1 = getattr(self, 'right_c_it'+str(i))
+            temp1.setText(r_s[i])
+            temp1.setChecked(False)
+        
+        for i in range(9):
+            temp = getattr(self, 'left_a_it'+str(i))
+            temp.setText(l_t[i])
+            temp.setChecked(False)
+            temp1 = getattr(self, 'right_a_it'+str(i))
+            temp1.setText(r_t[i])
+            temp1.setChecked(False)
 
+        #for i in range(5):
+        #    temp = getattr(self, 'left_c_it'+str(i))
+        #    temp.setChecked(False)
+        #self.left_c_it0.setChecked(False)
+ 
         self.lft_im_label.repaint()
         self.rht_im_label.repaint()
-        self.lft_c_label.setText(', '.join(l_s))
-        self.lft_a_label.setText(', '.join(l_t))
-        self.rht_c_label.setText(', '.join(r_s))
-        self.rht_a_label.setText(', '.join(r_t))
+
+        #self.left_c_it1.setChecked(False)
 
         QtWidgets.qApp.processEvents()
         QCoreApplication.processEvents()
@@ -227,10 +299,6 @@ class GridLayout(QtWidgets.QMainWindow):
         if len(lft_cap.strip())!= '':
             self.lft_cap.setPlainText(lft_cap)
 
-        #self.lft_cap.setPlainText("")
-        #self.rht_cap.setPlainText("")
-        
-        #print('done')
 
     @pyqtSlot()
     def prev_click(self):
@@ -257,8 +325,6 @@ class GridLayout(QtWidgets.QMainWindow):
         if len(lft_cap.strip())!= '':
             self.lft_cap.setPlainText(lft_cap)
                 
-        #self.rht_cap.setPlainText(rht_cap)
-        #self.lft_cap.setPlainText(lft_cap)
         self.spinbox.setValue(fench_index)
 
 app = QtWidgets.QApplication(sys.argv)
