@@ -12,14 +12,13 @@ pip install python-qt5 requests scikit-image #for windows/mac
 pip install --user pyqt5 requests scikit-image #for ubuntu 
 ```
 
-
 Then, run the main.py to start:
 ``` bash
 python main.py
 ```
 Steps:
 * Download this project and install the requirements.
-* Select or input the beginning image Id in the top "Image ID" box.
+* Select or input the beginning image ID in the top "Image ID" box.
 * Input the key words (split by newline character)for two images in their corresponding text areas or select the check boxes.
 * Click 'Next Sample' to continue, and the result will be automatically saved in './caption_result/' dir.
 
