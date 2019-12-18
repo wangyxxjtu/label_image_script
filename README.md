@@ -21,8 +21,13 @@ Steps:
 * Select or input the beginning image ID in the top "Image ID" box.
 * Input the key words (split by newline character)for two images in their corresponding text areas or select the check boxes.
 * Click 'Next Sample' to continue, and the result will be automatically saved in './caption_result/' dir.
-* Each image should have 3-5 labels
  
+Relus to follow：
+* Key words mainly depends on your subjective judgement, the candidates in check boxes are only for reference purpose.
+* If you think the candidate labels in check boxes match the image content, just tick it.
+* As for the key words matching the image but missed in check boxes, you should manually type them.
+* Each image should have 3-5 labels
+
 Example
 
 ![image](example.png)
