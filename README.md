@@ -23,7 +23,7 @@ Steps:
 * Click 'Next Sample' to continue, and the result will be automatically saved in './caption_result/' dir.
  
 Relus to follow：
-* Key words mainly depends on your subjective judgement, the candidates in check boxes are only for reference purpose.
+* The key words mainly depend on your subjective judgement, the candidates in check boxes are only for reference purpose.
 * If you think the candidate labels in check boxes match the image content, just tick it.
 * As for the key words matching the image but missed in check boxes, you should manually type them.
 * Each image should have 3-5 labels
